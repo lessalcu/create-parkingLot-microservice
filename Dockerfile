@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # 6️⃣ Exponer el puerto en el que corre la aplicación
-EXPOSE 6000
+EXPOSE 7002
 
 # 7️⃣ Comando para iniciar el servicio
 CMD ["node", "src/app.js"]
