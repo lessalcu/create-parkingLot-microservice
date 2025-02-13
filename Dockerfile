@@ -1,20 +1,20 @@
-# Use the official Node.js image
+# 1️⃣ Usa una imagen base de Node.js
 FROM node:18
 
-# Set the working directory inside the container
+# 2️⃣ Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copy the files needed to install the dependencies
-COPY package.json package-lock.json ./
+# 3️⃣ Copiar package.json y package-lock.json (si existe)
+COPY package*.json ./
 
-# Install dependencies
+# 4️⃣ Instalar las dependencias del proyecto
 RUN npm install
 
-# Copy the rest of the application
+# 5️⃣ Copiar todo el código de la aplicación al contenedor
 COPY . .
 
-# Expose the port on which the microservice runs
+# 6️⃣ Exponer el puerto en el que corre la aplicación
 EXPOSE 6000
 
-# Command to run the microservice
-CMD ["npm", "start"]
+# 7️⃣ Comando para iniciar el servicio
+CMD ["node", "src/app.js"]
