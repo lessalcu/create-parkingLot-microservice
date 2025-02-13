@@ -1,23 +1,23 @@
 const express = require('express');
 const cors = require('cors');
-const parkingRoutes = require('./routes/parkingLotRoutes');
+const reservationRoutes = require('./routes/reservationRoutes'); // 📌 Asegúrate de que este archivo exista y maneje las rutas de reservas
 const dotenv = require('dotenv');
 
 dotenv.config();
 
 const app = express();
 
-// 🔹 Permitir cualquier origen
+// 🟢 Habilitar CORS para permitir solicitudes desde el frontend
 app.use(cors({
-    origin: "*",
+    origin: "http://localhost:3000", // Permite solo solicitudes desde el frontend
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use(express.json());
-app.use(parkingRoutes);
+app.use(reservationRoutes); // 📌 Asegúrate de que este archivo contiene las rutas
 
-const PORT = process.env.PORT || 7002;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`Parking Lot Registration microservice running on port ${PORT}`);
+  console.log(`Reservation Creation microservice running on port ${PORT}`);
 });
