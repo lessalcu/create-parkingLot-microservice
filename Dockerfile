@@ -1,19 +1,20 @@
+# Use the official Node.js image
 FROM node:18
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy dependency files
+# Copy the files needed to install the dependencies
 COPY package.json package-lock.json ./
 
 # Install dependencies
-RUN npm install --omit=dev
+RUN npm install
 
-# Copy the rest of the application code
+# Copy the rest of the application
 COPY . .
 
-# Expose the port on which the application will run
+# Expose the port on which the microservice runs
 EXPOSE 6000
 
-# Command to run the application
-CMD ["node", "server.js"]
+# Command to run the microservice
+CMD ["npm", "start"]
