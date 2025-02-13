@@ -17,7 +17,7 @@ app.use(cors({
 app.use(express.json());
 app.use(parkingRoutes);
 
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 7002;
 app.listen(PORT, () => {
   console.log(`Parking Lot Registration microservice running on port ${PORT}`);
 });
